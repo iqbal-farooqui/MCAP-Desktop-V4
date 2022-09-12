@@ -1,0 +1,1 @@
+export type Route = '/home' | '/print' | '/settings' | '/profile' | '/quickbooks' | '/login' | '/forgotPassword' ;
