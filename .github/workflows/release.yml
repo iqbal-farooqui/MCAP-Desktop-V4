@@ -1,4 +1,4 @@
-name: App Builder
+name: Staging Builder
 on:
   push:
     tags:
