@@ -5,10 +5,7 @@ export const ROLES = [
     'Owner'
 ] as const
 
-export const BASE_URL = {
-    DEV: 'http://localhost:8000',
-    PROD: 'https://www.google.com'
-}
+export const BASE_URL = 'https://mcap-staging-4gcy2.ondigitalocean.app';
 export const CSRF = '/csrf';
 export const USERS = '/users';
 export const LOGIN = '/users/login';

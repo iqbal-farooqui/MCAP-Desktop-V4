@@ -91,9 +91,9 @@ export function Login() {
           <TextInput label="Email" placeholder="example@gmail.com" required {...form.getInputProps('email')} autoComplete="false" data-autofocus />
           <PasswordInput label="Password" placeholder="Your password" required mt="md" {...form.getInputProps('password')} autoComplete="false" />
           <Group position="right" mt="md">
-            <Anchor size="sm" component={Link} to="/forgotPassword">
+            {/* <Anchor size="sm" component={Link} to="/forgotPassword">
               Forgot password?
-            </Anchor>
+            </Anchor> */}
           </Group>
           <Button fullWidth mt="xl" type='submit'>
             Sign in

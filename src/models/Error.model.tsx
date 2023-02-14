@@ -2,7 +2,7 @@ export interface MCAPError {
     status: string;
     message: string;
     stack?: string;
-    error: MCAPErrorSummary
+    error?: MCAPErrorSummary
 }
 
 interface MCAPErrorSummary {

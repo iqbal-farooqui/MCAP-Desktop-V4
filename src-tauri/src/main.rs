@@ -56,9 +56,10 @@ async fn open_doc(
 
 #[tauri::command]
 async fn connect_to_quickbooks(handle: tauri::AppHandle) {
-    let qb_login_url: Url = String::from("http://localhost:8000/api/quickbooks/login")
-        .parse()
-        .unwrap();
+    let qb_login_url: Url =
+        String::from("https://mcap-staging-4gcy2.ondigitalocean.app/api/quickbooks/login")
+            .parse()
+            .unwrap();
 
     let qbo_window = tauri::WindowBuilder::new(
         &handle,

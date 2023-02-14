@@ -7,8 +7,8 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "MCAP-Desktop-V4",
-    "version": "0.1.0"
+    "productName": "MCAP-Scanner",
+    "version": "1.0.0"
   },
   "tauri": {
     "allowlist": {
@@ -29,7 +29,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "mcap-test",
+      "identifier": "mcap-desktop",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
