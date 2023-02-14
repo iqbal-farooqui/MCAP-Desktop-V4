@@ -47,12 +47,14 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-      - name: Install app dependencies and build web
-        # NOTE: include yarn build if frontend has build script
-        run: yarn install --frozen-lockfile # && yarn build
+
+      - name: Install app dependencies from lockfile and build web
+        # NOTE: comment out && yarn build if frontend does not have build script
+        run: yarn install --frozen-lockfile && yarn build
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
@@ -60,7 +62,7 @@ jobs:
         with:
           # tauri-action replaces \_\_VERSION\_\_ with the app version
           tagName: ${{ github.ref_name }}
-          releaseName: "[Staging] MCAP-Desktop v__VERSION__"
+          releaseName: "[Staging] MCAP-Desktop ${{ github.ref_name }}"
           releaseBody: |
             ${{steps.build_changelog.outputs.changelog}}
             See the assets to download this version and install.
