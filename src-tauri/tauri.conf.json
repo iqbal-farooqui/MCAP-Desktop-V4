@@ -51,7 +51,12 @@
       "csp": null
     },
     "updater": {
-      "active": false
+      "active": false,
+      "endpoints": [
+        "http://localhost:8000/updates/{{target}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDEyQ0MzNTA0NEZDOTlDNjcKUldSbm5NbFBCRFhNRXFHMDJHV1gzK2MweTZBaTljcVNUK2RCMmd4ZTd6T1daSDRQbTFLamZDSjAK"
     },
     "windows": [
       {

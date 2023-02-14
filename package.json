@@ -16,7 +16,7 @@
     "@mantine/hooks": "^4.2.12",
     "@mantine/modals": "^4.2.12",
     "@mantine/notifications": "^4.2.12",
-    "@tauri-apps/api": "^1.0.2",
+    "@tauri-apps/api": "^1.2.0",
     "axios": "^0.27.2",
     "dayjs": "^1.11.3",
     "generate-password-browser": "^1.1.0",
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@mantine/eslint-config": "^3.6.14",
-    "@tauri-apps/cli": "^1.0.4",
+    "@tauri-apps/cli": "^1.2.3",
     "@types/react": "^18.0.0",
     "@types/react-dom": "^18.0.0",
     "@types/react-router-dom": "^5.3.3",
