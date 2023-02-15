@@ -30,6 +30,7 @@
         "icons/icon.ico"
       ],
       "identifier": "mcap-desktop",
+      "publisher": "Mega City Auto Parts",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
