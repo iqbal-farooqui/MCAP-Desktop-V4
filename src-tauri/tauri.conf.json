@@ -57,7 +57,7 @@
         "https://mcap-staging-4gcy2.ondigitalocean.app/api/updates/{{target}}/{{current_version}}"
       ],
       "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDEyQ0MzNTA0NEZDOTlDNjcKUldSbm5NbFBCRFhNRXFHMDJHV1gzK2MweTZBaTljcVNUK2RCMmd4ZTd6T1daSDRQbTFLamZDSjAK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEUwQTgzMzBGODI1OURCMjIKUldRaTIxbUNEek9vNEU3blVkLzRVWGJiMk9DNGEyMG1rRjRGOVdISlNYSllPa3lLelJNUUZYcXkK"
     },
     "windows": [
       {
