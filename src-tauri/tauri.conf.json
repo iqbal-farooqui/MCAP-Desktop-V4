@@ -52,12 +52,12 @@
       "csp": null
     },
     "updater": {
-      "active": false,
+      "active": true,
       "endpoints": [
         "https://mcap-staging-4gcy2.ondigitalocean.app/api/updates/{{target}}/{{current_version}}"
       ],
       "dialog": true,
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEUwQTgzMzBGODI1OURCMjIKUldRaTIxbUNEek9vNEU3blVkLzRVWGJiMk9DNGEyMG1rRjRGOVdISlNYSllPa3lLelJNUUZYcXkK"
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEQ4NkRFMjhENzQyREE2RDEKUldUUnBpMTBqZUp0MkNhaXgrQUl3NDVyaE9WRDdHOE8wVnVLZVFud1g3azlPclA5bUpsbit2U0cK"
     },
     "windows": [
       {
