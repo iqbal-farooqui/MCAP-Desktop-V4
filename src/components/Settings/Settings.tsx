@@ -9,6 +9,7 @@ import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import PasswordMeter from '../Profile/PasswordMeter'
 import { changePassword, connectToQuickBooks } from './Settings.service'
 import useAuth from '../../hooks/useAuth';
+import AppVersion from '../AppVersion'
 
 type Props = {}
 
@@ -51,6 +52,8 @@ export default function Settings({ }: Props) {
   return (
     <>
       <Title order={1}>Settings</Title>
+      <Space h="xs" />
+      <AppVersion />
       <Space h="xl" />
       <>
         <Title order={3}>Connect to QuickBooks</Title>
