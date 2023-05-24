@@ -10,7 +10,8 @@ fn main() {
             add_barcode,
             open_doc,
             connect_to_quickbooks,
-            print_qb_doc
+            print_qb_doc,
+            get_version
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
@@ -23,8 +24,22 @@ mod print;
 
 use models::*;
 use pdf::{add_barcode_to_pdf, qb_add_barcode_to_pdf};
+use serde_json::Value;
+use std::fs;
 use tauri::{Manager, Window};
 use url::Url;
+
+#[tauri::command]
+fn get_version() -> Result<String, String> {
+    let file_content = fs::read_to_string("./tauri.conf.json")
+        .map_err(|err| format!("Error reading tauri.conf.json: {}", err))?;
+    let json: Value = serde_json::from_str(&file_content)
+        .map_err(|err| format!("Error parsing tauri.conf.json: {}", err))?;
+    let version = json["package"]["version"]
+        .as_str()
+        .ok_or("Error: version not found in tauri.conf.json")?;
+    Ok(version.to_string())
+}
 
 #[tauri::command]
 fn retrieve_buffer(path: String) -> BufferResponse {

@@ -21,6 +21,7 @@ import { AxiosError } from 'axios';
 import { useModals } from '@mantine/modals';
 import { MCAPError } from '../../../models/Error.model';
 import { MCAPResponse } from '../../../models/MCAP.model';
+import AppVersion from '../../AppVersion';
 
 type Props = {}
 
@@ -100,6 +101,8 @@ export function Login() {
           </Button>
         </form>
       </Paper>
+      <Space h="lg" /> 
+      <AppVersion />
     </Container>
   );
 }
