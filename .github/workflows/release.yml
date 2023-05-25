@@ -84,4 +84,4 @@ jobs:
 
       - name: Upload artifacts to S3
         run: |
-          aws s3 sync --delete ./ s3://${{ github.ref_name }}
+          aws s3 sync --delete ./ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }}
