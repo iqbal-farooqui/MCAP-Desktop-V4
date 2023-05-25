@@ -5,6 +5,14 @@ on:
       - "s*"
   workflow_dispatch:
 
+env:
+  BUCKET_NAME: "mcap-desktop-updates"
+  AWS_REGION: "ca-central-1"
+# permissions can be added at job level or workflow level
+permissions:
+  id-token: write
+  contents: read # This is required for actions/checkout
+
 jobs:
   release:
     strategy:
@@ -67,3 +75,13 @@ jobs:
             See the assets to download this version and install.
           releaseDraft: true
           prerelease: false
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::520516372695:role/github-actions-role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Upload artifacts to S3
+        run: |
+          aws s3 sync --delete ./ s3://${{ github.ref_name }}
