@@ -84,6 +84,7 @@ jobs:
 
   upload:
     runs-on: ubuntu-latest
+    needs: release
     permissions:
       id-token: write
       contents: read
@@ -94,7 +95,10 @@ jobs:
           role-to-assume: arn:aws:iam::520516372695:role/github-actions-role
           aws-region: ${{ env.AWS_REGION }}
 
-      - name: Print Contents
+      - name: Print Contents of current dir
+        run: ls -l
+
+      - name: Print Contents of src-tauri
         run: ls -lR src-tauri/target/release/bundle
 
       # - name: Upload artifacts to S3
