@@ -82,9 +82,21 @@ jobs:
           role-to-assume: arn:aws:iam::520516372695:role/github-actions-role
           aws-region: ${{ env.AWS_REGION }}
 
+  upload:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::520516372695:role/github-actions-role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Print Contents
+        run: ls -lR src-tauri/target/release/bundle
+
       # - name: Upload artifacts to S3
       #   run: |
       #     aws s3 sync --delete ./ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }}
-
-      - name: Print Contents
-        run: ls -l
