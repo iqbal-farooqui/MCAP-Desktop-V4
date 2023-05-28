@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "MCAP-Scanner",
-    "version": "1.0.19"
+    "version": "1.0.20"
   },
   "tauri": {
     "allowlist": {

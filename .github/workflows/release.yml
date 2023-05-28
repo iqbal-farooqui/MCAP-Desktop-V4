@@ -85,16 +85,16 @@ jobs:
       - name: Upload artifacts to S3 (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
-          aws s3 cp ./src-tauri/target/release/bundle/deb/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.deb'
-          aws s3 cp ./src-tauri/target/release/bundle/appimage/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.AppImage' --include '*.AppImage.tar.gz' --include '*.AppImage.tar.gz.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/deb/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.deb'
+          aws s3 sync ./src-tauri/target/release/bundle/appimage/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.AppImage' --include '*.AppImage.tar.gz' --include '*.AppImage.tar.gz.sig'
 
       - name: Upload artifacts to S3 (macos only)
         if: matrix.platform == 'macos-latest'
         run: |
-          aws s3 cp ./src-tauri/target/release/bundle/dmg/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.dmg'
-          aws s3 cp ./src-tauri/target/release/bundle/macos/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.app' --include '*.app.tar.gz' --include '*.app.tar.gz.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/dmg/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.dmg'
+          aws s3 sync ./src-tauri/target/release/bundle/macos/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.app' --include '*.app.tar.gz' --include '*.app.tar.gz.sig'
 
       - name: Upload artifacts to S3 (windows only)
         if: matrix.platform == 'windows-latest'
         run: |
-          aws s3 cp ./src-tauri/target/release/bundle/msi/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.msi' --include '*.msi.zip' --include '*.msi.zip.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/msi/ s3://${{ env.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.msi' --include '*.msi.zip' --include '*.msi.zip.sig'
