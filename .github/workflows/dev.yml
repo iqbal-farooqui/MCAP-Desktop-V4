@@ -75,7 +75,7 @@ jobs:
           TAURI_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
         with:
           # tauri-action replaces \_\_VERSION\_\_ with the app version
-          tagName: ${{ github.ref_name }}
+          tagName: d${{ steps.get_version.outputs.prop }}
           releaseName: "[Dev] MCAP-Desktop ${{ steps.get_version.outputs.prop }}"
           releaseBody: |
             ${{steps.build_changelog.outputs.changelog}}
