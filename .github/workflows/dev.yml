@@ -37,6 +37,16 @@ jobs:
         id: build_changelog
         run: echo "changelog=- ADD CHANGELOG" >> $GITHUB_OUTPUT
 
+      - name: Get version from tauri.conf.json
+        id: get_version
+        uses: notiz-dev/github-action-json-property@v0.2.0
+        with:
+          path: "src-tauri/tauri.conf.json"
+          prop_path: "package.version"
+
+      - name: Print version
+        run: echo "The version is ${{ steps.get_version.outputs.prop }}"
+
       - name: Node.js setup
         uses: actions/setup-node@v3
         # NOTE: enterprise developers may hard code a version
@@ -66,7 +76,7 @@ jobs:
         with:
           # tauri-action replaces \_\_VERSION\_\_ with the app version
           tagName: ${{ github.ref_name }}
-          releaseName: "[Dev] MCAP-Desktop ${{ github.ref_name }}"
+          releaseName: "[Dev] MCAP-Desktop ${{ steps.get_version.outputs.prop }}"
           releaseBody: |
             ${{steps.build_changelog.outputs.changelog}}
             See the assets to download this version and install.
@@ -82,16 +92,16 @@ jobs:
       - name: Upload artifacts to S3 (ubuntu only)
         if: matrix.platform == 'ubuntu-latest'
         run: |
-          aws s3 sync ./src-tauri/target/release/bundle/deb/ s3://${{ secrets.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.deb'
-          aws s3 sync ./src-tauri/target/release/bundle/appimage/ s3://${{ secrets.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.AppImage' --include '*.AppImage.tar.gz' --include '*.AppImage.tar.gz.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/deb/ s3://${{ secrets.BUCKET_NAME }}/${{ steps.get_version.outputs.prop }} --exclude '*' --include '*.deb'
+          aws s3 sync ./src-tauri/target/release/bundle/appimage/ s3://${{ secrets.BUCKET_NAME }}/${{ steps.get_version.outputs.prop }} --exclude '*' --include '*.AppImage' --include '*.AppImage.tar.gz' --include '*.AppImage.tar.gz.sig'
 
       - name: Upload artifacts to S3 (macos only)
         if: matrix.platform == 'macos-latest'
         run: |
-          aws s3 sync ./src-tauri/target/release/bundle/dmg/ s3://${{ secrets.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.dmg'
-          aws s3 sync ./src-tauri/target/release/bundle/macos/ s3://${{ secrets.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.app' --include '*.app.tar.gz' --include '*.app.tar.gz.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/dmg/ s3://${{ secrets.BUCKET_NAME }}/${{ steps.get_version.outputs.prop }} --exclude '*' --include '*.dmg'
+          aws s3 sync ./src-tauri/target/release/bundle/macos/ s3://${{ secrets.BUCKET_NAME }}/${{ steps.get_version.outputs.prop }} --exclude '*' --include '*.app' --include '*.app.tar.gz' --include '*.app.tar.gz.sig'
 
       - name: Upload artifacts to S3 (windows only)
         if: matrix.platform == 'windows-latest'
         run: |
-          aws s3 sync ./src-tauri/target/release/bundle/msi/ s3://${{ secrets.BUCKET_NAME }}/${{ github.ref_name }} --exclude '*' --include '*.msi' --include '*.msi.zip' --include '*.msi.zip.sig'
+          aws s3 sync ./src-tauri/target/release/bundle/msi/ s3://${{ secrets.BUCKET_NAME }}/${{ steps.get_version.outputs.prop }} --exclude '*' --include '*.msi' --include '*.msi.zip' --include '*.msi.zip.sig'
