@@ -109,6 +109,6 @@ jobs:
       - name: Notify MCAP API of new release
         uses: fjogeleit/http-request-action@v1
         with:
-          url: "${{ env.MCAP_API_URL }}/api/updates/notify"
+          url: "${{ vars.MCAP_API_URL }}/api/updates/notify"
           method: "POST"
           data: '{"version": "${{ steps.get_version.outputs.prop }}"}'
